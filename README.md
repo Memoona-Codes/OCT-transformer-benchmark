@@ -1,76 +1,69 @@
-# LEAD: a leakage-free framework for adapting retinal foundation models to Alzheimer's disease detection from OCT
+# Benchmarking Transformer Architectures for Alzheimer's Disease Screening Using Retinal OCT
 
-Code, patient-disjoint split definitions, prediction files and result tables for the LEAD manuscript.
-Every result in the paper can be recomputed from the prediction files in `data/predictions/` without a GPU.
+Code, logs and per-fold prediction files for the paper:
+
+> M. Sami, F. Hajati, and R. Chiong, "Benchmarking Transformer Architectures for Alzheimer's Disease Screening Using Retinal OCT," submitted to IEEE SSCI 2027.
+
+Five transformer architectures (Retformer, ViT, Swin, DeiT-style, MAE-style) are compared for Alzheimer's disease (AD) versus control classification from retinal OCT, under one identical training and evaluation protocol.
+
+## Data
+The Bissig OCT dataset is public on Dryad (CC0): https://doi.org/10.5061/dryad.msbcc2ftc
+14 AD and 14 age-matched control participants. `models/dataloader.py` builds 1,120 grayscale slices (50 x 50), balanced between classes.
+The data are not redistributed here. Download them and set:
+
+    export OCT_DATA_DIR=/path/to/OCT_Dataset
+
+Check that a run prints `Input shape: (1120, 50, 50, 1)`.
+
+## Protocol (identical for all models)
+* Trained from scratch: no pretraining, no augmentation
+* Nested cross-validation: 3 outer and 3 inner folds, `random_state=1`
+* Bayesian optimisation (BayesSearchCV): 15 iterations per model; search dimensions are architecture-specific
+* AdamW, 100 epochs, batch size 250
+
+DeiT-style = distillation token trained on true labels, no teacher.
+MAE-style = MAE encoder architecture trained end-to-end for classification, no self-supervised pretraining; Flatten readout instead of global average pooling.
 
 ## Folders
 | Folder | Contents |
 |---|---|
-| `1_synthetic_generation/` | VAE training, synthetic image generation, intensity rescaling, quality audit, and the leakage-free per-split generators |
-| `2_eyeclip_adaptation/` | EyeCLIP features, CLAHE, the ten adaptation methods, threshold choice, real-anchored score standardisation, slice and patient level evaluation |
-| `3_robustness_generalisation/` | CLAHE settings, all-patient cross-validation, second dataset (OCTDL), linear probe, second encoder (RETFound), label efficiency, set-up checks |
-| `data/splits/` | `split_seed0.csv` to `split_seed4.csv`: split_seed, set (train/val), class (AD/CO), patient_id, file. `all_splits.csv` joins them |
-| `data/predictions/` | Validation scores and thresholds for every method, input, split and seed |
-| `results/` | Metric tables produced from the prediction files |
+| `models/` | Data loader and the training script for each model |
+| `analysis/` | Metrics, efficiency, ROC and confusion-matrix figures, Figure 1, and backfill scripts that refit Retformer, ViT and Swin at their selected settings to save predictions |
+| `results/logs/` | Full output logs of every final run |
+| `results/roc_data/` | Out-of-fold predictions per model and fold (`<model>_fold<k>.npz`) |
 
-## How leakage is prevented
-* Splits are made by patient identity. `final_unified_eval.py` stops with an error if any patient is in both training and validation.
-* The decision threshold is chosen on out-of-fold scores from five inner folds, grouped by patient, on the training patients only. It is then applied unchanged to validation.
-* Scores are standardised with statistics of the real training images of each fit (real-anchored standardisation), never with validation data.
-* CLAHE is applied to each image on its own and has no fitted parameters. EyeCLIP and RETFound stay frozen.
-* No hyperparameter was tuned on validation patients.
+## Run
+    python models/bayes_niter15_v3.py                    # Retformer
+    python models/vit_swin_kfold_nested_matched_v2.py    # ViT and Swin
+    python models/deit_niter15_v3.py                     # DeiT-style
+    python models/mae_niter15_v3.py                      # MAE-style
 
-## Prediction files (`data/predictions/`)
-| File | Contents | Paper item |
-|---|---|---|
-| `predictions_final.csv` | Real images only, 10 methods, raw and CLAHE | Table 2, Figure 3, Supplementary Table S2 |
-| `predictions_synth_batch2.csv` | Real + 500 or 1,000 images from the original generator (trained on all 28 patients) | Table 5 (original pool), Supplementary Table S3 |
-| `predictions_synth_leakfree_nearcopy.csv` | Real + 500 or 1,000 images from per-split generators, original sampling (near-copy pool) | Table 5 (near-copy pool) |
-| `predictions_synth_leakfree_newimage.csv` | Real + 500 or 1,000 images from per-split generators, new-image sampling | Table 5 (new-image pool) |
-| `predictions_dosage_batch2.csv` | Standardisation study, real-anchored rule | Table 6, Figure 5 |
-| `predictions_dosage_batch2_pooled.csv` | Standardisation study, pooled rule | Table 6, Figure 5 |
+Figures and tables from the saved predictions (no GPU needed):
 
-Columns: run_time, method, preproc, dosage, split, seed, slice_id, patient_id, condition (DARK/LIGHT), y_true (1 = AD), score (standardised), threshold, patient_threshold.
+    cd analysis
+    python compute_full_metrics.py
+    python roc_curve_overlay.py
+    python confusion_matrix_display.py
 
-## Paper items and scripts
-| Paper item | Script |
-|---|---|
-| Figure 2 (CLAHE example) | `2_eyeclip_adaptation/make_clahe_figure.py` |
-| Table 2, left (five splits), Figure 3, Supplementary Table S2 | `2_eyeclip_adaptation/final_unified_eval.py`, then `analyze_predictions.py` |
-| Table 2, right (all 28 patients, 7 folds × 5 repeats) | `3_robustness_generalisation/exp_B_grouped_cv.py`, `exp_B_summary.py` |
-| Linear-probe rows (Tables 2 and 3) | `3_robustness_generalisation/exp_D_linear_probe.py` (`--design main` and `--design grouped`) |
-| Table 3, OCTDL rows; per-disease results (Section 3.3) | `3_robustness_generalisation/exp_C_octdl_clahe.py`, `exp_C2_per_disease.py` |
-| Table 3, RETFound rows | `3_robustness_generalisation/exp_E_retfound_clahe.py` |
-| Figure 4 (label efficiency) | `3_robustness_generalisation/exp_G_label_efficiency.py` |
-| CLAHE settings (Section 3.2) | `3_robustness_generalisation/exp_A_clahe_sensitivity.py`, `exp_summary.py` |
-| Crop-height check (Section 3.2) | result in `results/robustness/expF_height_check.csv` |
-| Supplementary Table S1 (VAE) | `1_synthetic_generation/train_v8_vae.py` |
-| Table 4 (quality audit) | `compute_batch2_fid.py`, `check_batch2_class_correlation.py`, `audit_existing_synthetic.py` |
-| Supplementary Figure S1 | `1_synthetic_generation/fig2_real_vs_synthetic.py`, `batch2_pearsonr_scatter_pairs.py` |
-| Table 5, original pool; Supplementary Table S3 | `2_eyeclip_adaptation/final_synthetic_all_methods.py`, then `analyze_predictions.py` |
-| Table 5, leakage-free pools | `1_synthetic_generation/exp_H_vae_per_split.py` (near-copy), `exp_H2_regenerate.py` (new-image), `audit_existing_synthetic.py --leakfree`, then `final_synthetic_all_methods.py --pool ...` |
-| Table 6, Figure 5 | `final_synthetic_dosage.py` (real-anchored), `final_synthetic_dosage_pooled_rule.py` (pooled), `plot_standardisation.py` |
+## Results (mean ± SD over 3 outer folds)
+| Model | Accuracy (%) | AUC (%) | Parameters |
+|---|---|---|---|
+| ViT | 91.79 ± 1.76 | 96.80 ± 0.79 | 222,089 |
+| Retformer | 90.72 ± 2.54 | 95.59 ± 1.80 | 382,647 |
+| Swin | 90.62 ± 0.44 | 96.24 ± 0.82 | 300,743 |
+| DeiT-style | 89.56 ± 2.45 | 95.65 ± 1.73 | 223,667 |
+| MAE-style | 84.73 ± 2.65 | 91.15 ± 2.16 | 91,097 |
 
-## Reproduce the tables from the prediction files (no GPU needed)
-    cd 2_eyeclip_adaptation
-    python analyze_predictions.py --pred ../data/predictions/predictions_final.csv ../data/predictions/predictions_synth_batch2.csv --out ../results_check --best "TaskRes+SAM"
-    python analyze_predictions.py --pred ../data/predictions/predictions_synth_leakfree_newimage.csv --out ../results_check_leakfree --best "TaskRes+SAM"
-    python analyze_predictions.py --pred ../data/predictions/predictions_dosage_batch2.csv --out ../results_check_dosage --best "TaskRes+SAM"
-    python plot_standardisation.py
+## Important limitations
+* **Slice-level cross-validation.** Folds split slices, not participants, so slices from the same participant can appear in both training and test folds. The results compare architectures under one protocol; they do not measure performance on unseen patients. With participant-grouped folds, accuracy falls to about 45 to 65%. A leakage-free follow-up is LEAD: https://github.com/Memoona-Codes/LEAD-retinal-OCT
+* **Run-to-run variance.** BayesSearchCV was not fully seeded. Swin was run twice (`swin_niter15_v3b_output.txt` is reported; `swin_niter15_v3_output.txt` is the second run).
+* Experiments ran on CPU TensorFlow; a full search takes several hours per model.
 
-## Rerun the experiments (GPU)
-1. Download the Bissig OCT images from Dryad (https://doi.org/10.5061/dryad.msbcc2ftc, CC0) and arrange them by the files listed in `data/splits/`.
-2. Download OCTDL from Mendeley Data (Kulyabin et al., Scientific Data 11:365, 2024; CC BY 4.0).
-3. Obtain the EyeCLIP ViT-B/32 weights from the EyeCLIP release, and the RETFound OCT weights from Hugging Face (`YukunZhou/RETFound_mae_natureOCT`). Images and weights are not redistributed here.
-4. Run `1_synthetic_generation/`, then `2_eyeclip_adaptation/`, then `3_robustness_generalisation/` (see the README in each folder).
+## Environment
+`environment.yml` (conda): `conda env create -f environment.yml`
 
-Experiments ran on one NVIDIA A100 (40 GB). `requirements.txt` lists the main packages; `requirements_full.txt` is the full environment.
+## AI assistance
+AI tools were used to help write and debug parts of the code. All experiments were designed, run and checked by the authors.
 
-## Note on the synthetic images
-* **Original pool.** The first VAE was trained on images of all 28 patients, so its synthetic images drew on every validation patient. Intensity rescaling for this pool used one fixed training set (197 B-scans, 20 patients) that contains 5 to 7 of the 8 validation patients of each split (`data/checks.md`). Results with this pool are therefore an optimistic test of augmentation.
-* **Leakage-free pools.** For each split, a new VAE with the same architecture was trained on the 20 training patients only, and its images were rescaled with the statistics of those training images. Two sampling settings were used (near-copy and new-image). Validation patients were never used.
-* Neither pool gave a consistent gain over real images only (Table 5).
-* Real-image results (Tables 2 and 3) use no synthetic images and are not affected by either point.
-
-## Citation
-Sami, M., Hajati, F., & Chiong, R. LEAD: a leakage-free framework for adapting retinal foundation models to Alzheimer's disease detection from OCT. Manuscript under review.
+## License
+MIT (see `LICENSE`).
