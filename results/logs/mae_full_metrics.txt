@@ -1,0 +1,13 @@
+Found 3 fold file(s): ['roc_data/mae_fold1.npz', 'roc_data/mae_fold2.npz', 'roc_data/mae_fold3.npz']
+
+roc_data/mae_fold1.npz: accuracy=0.8262, auc=0.9019, precision=0.8211, recall=0.8342, specificity=0.8182, f1=0.8276
+roc_data/mae_fold2.npz: accuracy=0.8847, auc=0.9414, precision=0.9066, recall=0.8639, specificity=0.9066, f1=0.8847
+roc_data/mae_fold3.npz: accuracy=0.8311, auc=0.8911, precision=0.8439, recall=0.8022, specificity=0.8586, f1=0.8225
+
+=== MAE -- mean +/- std across 3 folds ===
+accuracy: 84.73% +/- 2.65%
+auc: 91.15% +/- 2.16%
+precision: 85.72% +/- 3.62%
+recall: 83.34% +/- 2.52%
+specificity: 86.11% +/- 3.61%
+f1: 84.49% +/- 2.82%

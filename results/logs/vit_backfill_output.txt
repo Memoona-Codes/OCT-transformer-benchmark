@@ -1,0 +1,25 @@
+nohup: ignoring input
+2026-08-22 13:31:01.100390: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
+2026-08-22 13:31:01.101027: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-08-22 13:31:01.178861: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F AVX512_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2026-08-22 13:31:12.954818: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-08-22 13:31:12.959363: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
+Skipped 128 YA files, 0 AQ files, and 0 non-subject/calibration files (AD-vs-CO only run).
+Fraction of AD images: 0.5
+Input shape: (1120, 50, 50, 1)
+
+[ViT backfill] Fold 1: refitting at {'mlp_head_unit_1': 32, 'mlp_head_unit_2': 32, 'num_heads': 1, 'patch_size': 5, 'projection_dim': 36, 'transformer_layers': 1}
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1787369550.685583 1263307 cuda_executor.cc:1309] INTERNAL: CUDA Runtime error: Failed call to cudaGetRuntimeVersion: Error loading CUDA libraries. GPU will not be used.: Error loading CUDA libraries. GPU will not be used.
+W0000 00:00:1787369550.696735 1263307 gpu_device.cc:2342] Cannot dlopen some GPU libraries. Please make sure the missing libraries mentioned above are installed properly if you would like to use GPU. Follow the guide at https://www.tensorflow.org/install/gpu for how to download and setup the required libraries for your platform.
+Skipping registering GPU devices...
+[ViT backfill] Fold 1: refit test accuracy = 0.8877 (original logged: overall mean was 0.9179)
+
+[ViT backfill] Fold 2: refitting at {'mlp_head_unit_1': 35, 'mlp_head_unit_2': 20, 'num_heads': 1, 'patch_size': 5, 'projection_dim': 32, 'transformer_layers': 1}
+[ViT backfill] Fold 2: refit test accuracy = 0.9196 (original logged: overall mean was 0.9179)
+
+[ViT backfill] Fold 3: refitting at {'mlp_head_unit_1': 54, 'mlp_head_unit_2': 32, 'num_heads': 5, 'patch_size': 5, 'projection_dim': 36, 'transformer_layers': 2}
+[ViT backfill] Fold 3: refit test accuracy = 0.9088 (original logged: overall mean was 0.9179)
+
+[ViT backfill] Done -- roc_data/vit_fold*.npz saved for all 3 folds.

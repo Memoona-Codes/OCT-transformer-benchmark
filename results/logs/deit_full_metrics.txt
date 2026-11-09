@@ -1,0 +1,13 @@
+Found 3 fold file(s): ['roc_data/deit_fold1.npz', 'roc_data/deit_fold2.npz', 'roc_data/deit_fold3.npz']
+
+roc_data/deit_fold1.npz: accuracy=0.8610, auc=0.9321, precision=0.8857, recall=0.8289, specificity=0.8930, f1=0.8564
+roc_data/deit_fold2.npz: accuracy=0.9142, auc=0.9679, precision=0.9119, recall=0.9215, specificity=0.9066, f1=0.9167
+roc_data/deit_fold3.npz: accuracy=0.9115, auc=0.9696, precision=0.9027, recall=0.9176, specificity=0.9058, f1=0.9101
+
+=== DEIT -- mean +/- std across 3 folds ===
+accuracy: 89.56% +/- 2.45%
+auc: 95.65% +/- 1.73%
+precision: 90.01% +/- 1.09%
+recall: 88.93% +/- 4.28%
+specificity: 90.18% +/- 0.62%
+f1: 89.44% +/- 2.70%

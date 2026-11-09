@@ -1,0 +1,204 @@
+nohup: ignoring input
+2026-08-21 17:22:00.551517: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
+2026-08-21 17:22:00.552108: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-08-21 17:22:00.629777: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F AVX512_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2026-08-21 17:22:11.036838: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-08-21 17:22:11.041699: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
+Skipped 128 YA files, 0 AQ files, and 0 non-subject/calibration files (AD-vs-CO only run).
+Fraction of AD images: 0.5
+Input shape: (1120, 50, 50, 1)
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1787297008.725798 3459496 cuda_executor.cc:1309] INTERNAL: CUDA Runtime error: Failed call to cudaGetRuntimeVersion: Error loading CUDA libraries. GPU will not be used.: Error loading CUDA libraries. GPU will not be used.
+W0000 00:00:1787297008.736784 3459496 gpu_device.cc:2342] Cannot dlopen some GPU libraries. Please make sure the missing libraries mentioned above are installed properly if you would like to use GPU. Follow the guide at https://www.tensorflow.org/install/gpu for how to download and setup the required libraries for your platform.
+Skipping registering GPU devices...
+[CV 1/3] END heads=5, layers_n=4, mlp_head_1=32, mlp_head_2=16, patch_size=2, proj_dim=36;, score=0.707 total time= 8.0min
+[CV 2/3] END heads=5, layers_n=4, mlp_head_1=32, mlp_head_2=16, patch_size=2, proj_dim=36;, score=0.562 total time= 8.0min
+WARNING:tensorflow:5 out of the last 17 calls to <function TensorFlowTrainer.make_predict_function.<locals>.one_step_on_data_distributed at 0x150991a6ea60> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
+[CV 3/3] END heads=5, layers_n=4, mlp_head_1=32, mlp_head_2=16, patch_size=2, proj_dim=36;, score=0.742 total time= 8.0min
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+WARNING:tensorflow:5 out of the last 17 calls to <function TensorFlowTrainer.make_predict_function.<locals>.one_step_on_data_distributed at 0x150991279ca0> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
+[CV 1/3] END heads=2, layers_n=1, mlp_head_1=32, mlp_head_2=32, patch_size=2, proj_dim=60;, score=0.647 total time= 1.5min
+[CV 2/3] END heads=2, layers_n=1, mlp_head_1=32, mlp_head_2=32, patch_size=2, proj_dim=60;, score=0.570 total time= 1.5min
+[CV 3/3] END heads=2, layers_n=1, mlp_head_1=32, mlp_head_2=32, patch_size=2, proj_dim=60;, score=0.569 total time= 1.5min
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+[CV 1/3] END heads=4, layers_n=3, mlp_head_1=32, mlp_head_2=32, patch_size=10, proj_dim=60;, score=0.578 total time=  38.0s
+[CV 2/3] END heads=4, layers_n=3, mlp_head_1=32, mlp_head_2=32, patch_size=10, proj_dim=60;, score=0.811 total time=  40.8s
+[CV 3/3] END heads=4, layers_n=3, mlp_head_1=32, mlp_head_2=32, patch_size=10, proj_dim=60;, score=0.726 total time=  41.7s
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+[CV 1/3] END heads=5, layers_n=2, mlp_head_1=64, mlp_head_2=16, patch_size=5, proj_dim=38;, score=0.751 total time=  35.2s
+[CV 2/3] END heads=5, layers_n=2, mlp_head_1=64, mlp_head_2=16, patch_size=5, proj_dim=38;, score=0.606 total time=  37.6s
+[CV 3/3] END heads=5, layers_n=2, mlp_head_1=64, mlp_head_2=16, patch_size=5, proj_dim=38;, score=0.694 total time=  37.3s
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+[CV 1/3] END heads=4, layers_n=4, mlp_head_1=32, mlp_head_2=32, patch_size=2, proj_dim=42;, score=0.683 total time= 7.0min
+[CV 2/3] END heads=4, layers_n=4, mlp_head_1=32, mlp_head_2=32, patch_size=2, proj_dim=42;, score=0.494 total time= 7.0min
+[CV 3/3] END heads=4, layers_n=4, mlp_head_1=32, mlp_head_2=32, patch_size=2, proj_dim=42;, score=0.661 total time= 7.0min
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+[CV 1/3] END heads=5, layers_n=4, mlp_head_1=32, mlp_head_2=32, patch_size=5, proj_dim=62;, score=0.518 total time= 1.1min
+[CV 2/3] END heads=5, layers_n=4, mlp_head_1=32, mlp_head_2=32, patch_size=5, proj_dim=62;, score=0.578 total time= 1.1min
+[CV 3/3] END heads=5, layers_n=4, mlp_head_1=32, mlp_head_2=32, patch_size=5, proj_dim=62;, score=0.746 total time= 1.0min
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+[CV 1/3] END heads=1, layers_n=1, mlp_head_1=64, mlp_head_2=32, patch_size=5, proj_dim=38;, score=0.691 total time=  26.7s
+[CV 2/3] END heads=1, layers_n=1, mlp_head_1=64, mlp_head_2=32, patch_size=5, proj_dim=38;, score=0.787 total time=  26.5s
+[CV 3/3] END heads=1, layers_n=1, mlp_head_1=64, mlp_head_2=32, patch_size=5, proj_dim=38;, score=0.657 total time=  26.9s
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+[CV 1/3] END heads=1, layers_n=3, mlp_head_1=32, mlp_head_2=16, patch_size=10, proj_dim=32;, score=0.735 total time=  37.5s
+[CV 2/3] END heads=1, layers_n=3, mlp_head_1=32, mlp_head_2=16, patch_size=10, proj_dim=32;, score=0.819 total time=  35.6s
+[CV 3/3] END heads=1, layers_n=3, mlp_head_1=32, mlp_head_2=16, patch_size=10, proj_dim=32;, score=0.782 total time=  36.1s
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+[CV 1/3] END heads=2, layers_n=3, mlp_head_1=32, mlp_head_2=16, patch_size=2, proj_dim=62;, score=0.606 total time= 4.0min
+[CV 2/3] END heads=2, layers_n=3, mlp_head_1=32, mlp_head_2=16, patch_size=2, proj_dim=62;, score=0.506 total time= 4.0min
+[CV 3/3] END heads=2, layers_n=3, mlp_head_1=32, mlp_head_2=16, patch_size=2, proj_dim=62;, score=0.520 total time= 4.1min
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+[CV 1/3] END heads=1, layers_n=2, mlp_head_1=64, mlp_head_2=16, patch_size=5, proj_dim=36;, score=0.747 total time=  27.3s
+[CV 2/3] END heads=1, layers_n=2, mlp_head_1=64, mlp_head_2=16, patch_size=5, proj_dim=36;, score=0.751 total time=  38.5s
+[CV 3/3] END heads=1, layers_n=2, mlp_head_1=64, mlp_head_2=16, patch_size=5, proj_dim=36;, score=0.698 total time=  34.6s
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+[CV 1/3] END heads=1, layers_n=1, mlp_head_1=64, mlp_head_2=16, patch_size=5, proj_dim=32;, score=0.655 total time=  26.8s
+[CV 2/3] END heads=1, layers_n=1, mlp_head_1=64, mlp_head_2=16, patch_size=5, proj_dim=32;, score=0.739 total time=  26.3s
+[CV 3/3] END heads=1, layers_n=1, mlp_head_1=64, mlp_head_2=16, patch_size=5, proj_dim=32;, score=0.746 total time=  26.9s
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+[CV 1/3] END heads=1, layers_n=4, mlp_head_1=32, mlp_head_2=16, patch_size=5, proj_dim=32;, score=0.675 total time=  52.7s
+[CV 2/3] END heads=1, layers_n=4, mlp_head_1=32, mlp_head_2=16, patch_size=5, proj_dim=32;, score=0.711 total time=  58.2s
+[CV 3/3] END heads=1, layers_n=4, mlp_head_1=32, mlp_head_2=16, patch_size=5, proj_dim=32;, score=0.669 total time=  57.2s
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+[CV 1/3] END heads=1, layers_n=3, mlp_head_1=64, mlp_head_2=16, patch_size=10, proj_dim=62;, score=0.655 total time=  31.5s
+[CV 2/3] END heads=1, layers_n=3, mlp_head_1=64, mlp_head_2=16, patch_size=10, proj_dim=62;, score=0.755 total time=  38.6s
+[CV 3/3] END heads=1, layers_n=3, mlp_head_1=64, mlp_head_2=16, patch_size=10, proj_dim=62;, score=0.798 total time=  37.8s
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+[CV 1/3] END heads=1, layers_n=1, mlp_head_1=32, mlp_head_2=16, patch_size=10, proj_dim=32;, score=0.763 total time=  19.7s
+[CV 2/3] END heads=1, layers_n=1, mlp_head_1=32, mlp_head_2=16, patch_size=10, proj_dim=32;, score=0.763 total time=  23.3s
+[CV 3/3] END heads=1, layers_n=1, mlp_head_1=32, mlp_head_2=16, patch_size=10, proj_dim=32;, score=0.746 total time=  18.9s
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+[CV 1/3] END heads=1, layers_n=4, mlp_head_1=32, mlp_head_2=32, patch_size=10, proj_dim=60;, score=0.727 total time=  45.6s
+[CV 2/3] END heads=1, layers_n=4, mlp_head_1=32, mlp_head_2=32, patch_size=10, proj_dim=60;, score=0.751 total time=  44.3s
+[CV 3/3] END heads=1, layers_n=4, mlp_head_1=32, mlp_head_2=32, patch_size=10, proj_dim=60;, score=0.774 total time=  43.7s
+[MAE] Fold 1: test accuracy = 0.8262
+[MAE] Fold 1: best params = OrderedDict([('heads', 1), ('layers_n', 3), ('mlp_head_1', 32), ('mlp_head_2', 16), ('patch_size', 10), ('proj_dim', 32)])
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+[CV 1/3] END heads=2, layers_n=4, mlp_head_1=32, mlp_head_2=16, patch_size=10, proj_dim=52;, score=0.747 total time=  46.4s
+[CV 2/3] END heads=2, layers_n=4, mlp_head_1=32, mlp_head_2=16, patch_size=10, proj_dim=52;, score=0.635 total time=  45.6s
+[CV 3/3] END heads=2, layers_n=4, mlp_head_1=32, mlp_head_2=16, patch_size=10, proj_dim=52;, score=0.586 total time=  48.3s
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+[CV 1/3] END heads=1, layers_n=1, mlp_head_1=64, mlp_head_2=16, patch_size=2, proj_dim=54;, score=0.574 total time= 1.2min
+[CV 2/3] END heads=1, layers_n=1, mlp_head_1=64, mlp_head_2=16, patch_size=2, proj_dim=54;, score=0.478 total time= 1.2min
+[CV 3/3] END heads=1, layers_n=1, mlp_head_1=64, mlp_head_2=16, patch_size=2, proj_dim=54;, score=0.518 total time= 1.2min
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+[CV 1/3] END heads=5, layers_n=2, mlp_head_1=64, mlp_head_2=32, patch_size=10, proj_dim=60;, score=0.606 total time=  30.6s
+[CV 2/3] END heads=5, layers_n=2, mlp_head_1=64, mlp_head_2=32, patch_size=10, proj_dim=60;, score=0.715 total time=  31.6s
+[CV 3/3] END heads=5, layers_n=2, mlp_head_1=64, mlp_head_2=32, patch_size=10, proj_dim=60;, score=0.695 total time=  31.2s
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+[CV 1/3] END heads=2, layers_n=4, mlp_head_1=32, mlp_head_2=32, patch_size=2, proj_dim=62;, score=0.510 total time= 5.6min
+[CV 2/3] END heads=2, layers_n=4, mlp_head_1=32, mlp_head_2=32, patch_size=2, proj_dim=62;, score=0.530 total time= 5.4min
+[CV 3/3] END heads=2, layers_n=4, mlp_head_1=32, mlp_head_2=32, patch_size=2, proj_dim=62;, score=0.498 total time= 5.4min
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+[CV 1/3] END heads=4, layers_n=4, mlp_head_1=32, mlp_head_2=32, patch_size=5, proj_dim=60;, score=0.514 total time= 1.1min
+[CV 2/3] END heads=4, layers_n=4, mlp_head_1=32, mlp_head_2=32, patch_size=5, proj_dim=60;, score=0.647 total time=  55.9s
+[CV 3/3] END heads=4, layers_n=4, mlp_head_1=32, mlp_head_2=32, patch_size=5, proj_dim=60;, score=0.534 total time=  56.8s
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+[CV 1/3] END heads=1, layers_n=1, mlp_head_1=64, mlp_head_2=32, patch_size=2, proj_dim=40;, score=0.554 total time=  59.0s
+[CV 2/3] END heads=1, layers_n=1, mlp_head_1=64, mlp_head_2=32, patch_size=2, proj_dim=40;, score=0.558 total time=  58.7s
+[CV 3/3] END heads=1, layers_n=1, mlp_head_1=64, mlp_head_2=32, patch_size=2, proj_dim=40;, score=0.498 total time=  59.0s
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+[CV 1/3] END heads=1, layers_n=3, mlp_head_1=32, mlp_head_2=32, patch_size=10, proj_dim=46;, score=0.779 total time=  37.5s
+[CV 2/3] END heads=1, layers_n=3, mlp_head_1=32, mlp_head_2=32, patch_size=10, proj_dim=46;, score=0.659 total time=  38.3s
+[CV 3/3] END heads=1, layers_n=3, mlp_head_1=32, mlp_head_2=32, patch_size=10, proj_dim=46;, score=0.767 total time=  37.7s
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+[CV 1/3] END heads=4, layers_n=3, mlp_head_1=64, mlp_head_2=32, patch_size=2, proj_dim=34;, score=0.562 total time= 5.2min
+[CV 2/3] END heads=4, layers_n=3, mlp_head_1=64, mlp_head_2=32, patch_size=2, proj_dim=34;, score=0.651 total time= 5.2min
+[CV 3/3] END heads=4, layers_n=3, mlp_head_1=64, mlp_head_2=32, patch_size=2, proj_dim=34;, score=0.530 total time= 5.1min
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+[CV 1/3] END heads=2, layers_n=1, mlp_head_1=64, mlp_head_2=16, patch_size=5, proj_dim=60;, score=0.598 total time=  26.4s
+[CV 2/3] END heads=2, layers_n=1, mlp_head_1=64, mlp_head_2=16, patch_size=5, proj_dim=60;, score=0.586 total time=  27.1s
+[CV 3/3] END heads=2, layers_n=1, mlp_head_1=64, mlp_head_2=16, patch_size=5, proj_dim=60;, score=0.610 total time=  27.1s
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+[CV 1/3] END heads=1, layers_n=3, mlp_head_1=64, mlp_head_2=16, patch_size=2, proj_dim=62;, score=0.510 total time= 3.2min
+[CV 2/3] END heads=1, layers_n=3, mlp_head_1=64, mlp_head_2=16, patch_size=2, proj_dim=62;, score=0.490 total time= 3.1min
+[CV 3/3] END heads=1, layers_n=3, mlp_head_1=64, mlp_head_2=16, patch_size=2, proj_dim=62;, score=0.498 total time= 3.1min
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+[CV 1/3] END heads=4, layers_n=1, mlp_head_1=64, mlp_head_2=32, patch_size=10, proj_dim=46;, score=0.755 total time=  22.9s
+[CV 2/3] END heads=4, layers_n=1, mlp_head_1=64, mlp_head_2=32, patch_size=10, proj_dim=46;, score=0.747 total time=  22.2s
+[CV 3/3] END heads=4, layers_n=1, mlp_head_1=64, mlp_head_2=32, patch_size=10, proj_dim=46;, score=0.711 total time=  22.7s
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+[CV 1/3] END heads=4, layers_n=1, mlp_head_1=64, mlp_head_2=16, patch_size=10, proj_dim=46;, score=0.679 total time=  22.1s
+[CV 2/3] END heads=4, layers_n=1, mlp_head_1=64, mlp_head_2=16, patch_size=10, proj_dim=46;, score=0.715 total time=  21.9s
+[CV 3/3] END heads=4, layers_n=1, mlp_head_1=64, mlp_head_2=16, patch_size=10, proj_dim=46;, score=0.747 total time=  21.9s
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+[CV 1/3] END heads=5, layers_n=1, mlp_head_1=64, mlp_head_2=32, patch_size=10, proj_dim=42;, score=0.731 total time=  21.9s
+[CV 2/3] END heads=5, layers_n=1, mlp_head_1=64, mlp_head_2=32, patch_size=10, proj_dim=42;, score=0.811 total time=  22.4s
+[CV 3/3] END heads=5, layers_n=1, mlp_head_1=64, mlp_head_2=32, patch_size=10, proj_dim=42;, score=0.747 total time=  22.2s
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+[CV 1/3] END heads=4, layers_n=1, mlp_head_1=64, mlp_head_2=32, patch_size=10, proj_dim=42;, score=0.727 total time=  22.1s
+[CV 2/3] END heads=4, layers_n=1, mlp_head_1=64, mlp_head_2=32, patch_size=10, proj_dim=42;, score=0.695 total time=  22.5s
+[CV 3/3] END heads=4, layers_n=1, mlp_head_1=64, mlp_head_2=32, patch_size=10, proj_dim=42;, score=0.727 total time=  22.2s
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+[CV 1/3] END heads=5, layers_n=1, mlp_head_1=64, mlp_head_2=32, patch_size=10, proj_dim=46;, score=0.731 total time=  23.0s
+[CV 2/3] END heads=5, layers_n=1, mlp_head_1=64, mlp_head_2=32, patch_size=10, proj_dim=46;, score=0.663 total time=  22.9s
+[CV 3/3] END heads=5, layers_n=1, mlp_head_1=64, mlp_head_2=32, patch_size=10, proj_dim=46;, score=0.763 total time=  22.2s
+[MAE] Fold 2: test accuracy = 0.8847
+[MAE] Fold 2: best params = OrderedDict([('heads', 5), ('layers_n', 1), ('mlp_head_1', 64), ('mlp_head_2', 32), ('patch_size', 10), ('proj_dim', 42)])
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+[CV 1/3] END heads=1, layers_n=4, mlp_head_1=32, mlp_head_2=32, patch_size=10, proj_dim=50;, score=0.622 total time=  35.2s
+[CV 2/3] END heads=1, layers_n=4, mlp_head_1=32, mlp_head_2=32, patch_size=10, proj_dim=50;, score=0.763 total time=  44.2s
+[CV 3/3] END heads=1, layers_n=4, mlp_head_1=32, mlp_head_2=32, patch_size=10, proj_dim=50;, score=0.735 total time=  54.2s
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+[CV 1/3] END heads=2, layers_n=3, mlp_head_1=32, mlp_head_2=16, patch_size=2, proj_dim=58;, score=0.490 total time= 3.9min
+[CV 2/3] END heads=2, layers_n=3, mlp_head_1=32, mlp_head_2=16, patch_size=2, proj_dim=58;, score=0.530 total time= 3.9min
+[CV 3/3] END heads=2, layers_n=3, mlp_head_1=32, mlp_head_2=16, patch_size=2, proj_dim=58;, score=0.498 total time= 4.0min
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+[CV 1/3] END heads=5, layers_n=1, mlp_head_1=32, mlp_head_2=32, patch_size=5, proj_dim=34;, score=0.699 total time=  27.1s
+[CV 2/3] END heads=5, layers_n=1, mlp_head_1=32, mlp_head_2=32, patch_size=5, proj_dim=34;, score=0.687 total time=  27.0s
+[CV 3/3] END heads=5, layers_n=1, mlp_head_1=32, mlp_head_2=32, patch_size=5, proj_dim=34;, score=0.614 total time=  26.2s
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+[CV 1/3] END heads=1, layers_n=2, mlp_head_1=64, mlp_head_2=16, patch_size=5, proj_dim=32;, score=0.707 total time=  35.8s
+[CV 2/3] END heads=1, layers_n=2, mlp_head_1=64, mlp_head_2=16, patch_size=5, proj_dim=32;, score=0.691 total time=  38.0s
+[CV 3/3] END heads=1, layers_n=2, mlp_head_1=64, mlp_head_2=16, patch_size=5, proj_dim=32;, score=0.659 total time=  37.1s
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+[CV 1/3] END heads=4, layers_n=3, mlp_head_1=32, mlp_head_2=32, patch_size=10, proj_dim=62;, score=0.783 total time=  41.0s
+[CV 2/3] END heads=4, layers_n=3, mlp_head_1=32, mlp_head_2=32, patch_size=10, proj_dim=62;, score=0.715 total time=  43.8s
+[CV 3/3] END heads=4, layers_n=3, mlp_head_1=32, mlp_head_2=32, patch_size=10, proj_dim=62;, score=0.683 total time=  36.6s
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+[CV 1/3] END heads=5, layers_n=2, mlp_head_1=32, mlp_head_2=16, patch_size=10, proj_dim=52;, score=0.779 total time=  31.2s
+[CV 2/3] END heads=5, layers_n=2, mlp_head_1=32, mlp_head_2=16, patch_size=10, proj_dim=52;, score=0.815 total time=  31.3s
+[CV 3/3] END heads=5, layers_n=2, mlp_head_1=32, mlp_head_2=16, patch_size=10, proj_dim=52;, score=0.775 total time=  31.5s
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+[CV 1/3] END heads=5, layers_n=2, mlp_head_1=64, mlp_head_2=32, patch_size=2, proj_dim=62;, score=0.554 total time= 4.6min
+[CV 2/3] END heads=5, layers_n=2, mlp_head_1=64, mlp_head_2=32, patch_size=2, proj_dim=62;, score=0.502 total time= 4.7min
+[CV 3/3] END heads=5, layers_n=2, mlp_head_1=64, mlp_head_2=32, patch_size=2, proj_dim=62;, score=0.534 total time= 4.7min
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+[CV 1/3] END heads=1, layers_n=3, mlp_head_1=32, mlp_head_2=32, patch_size=10, proj_dim=42;, score=0.767 total time=  37.9s
+[CV 2/3] END heads=1, layers_n=3, mlp_head_1=32, mlp_head_2=32, patch_size=10, proj_dim=42;, score=0.763 total time=  48.1s
+[CV 3/3] END heads=1, layers_n=3, mlp_head_1=32, mlp_head_2=32, patch_size=10, proj_dim=42;, score=0.767 total time=  40.3s
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+[CV 1/3] END heads=5, layers_n=3, mlp_head_1=64, mlp_head_2=16, patch_size=5, proj_dim=34;, score=0.707 total time=  48.8s
+[CV 2/3] END heads=5, layers_n=3, mlp_head_1=64, mlp_head_2=16, patch_size=5, proj_dim=34;, score=0.695 total time=  46.8s
+[CV 3/3] END heads=5, layers_n=3, mlp_head_1=64, mlp_head_2=16, patch_size=5, proj_dim=34;, score=0.610 total time=  47.4s
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+[CV 1/3] END heads=5, layers_n=2, mlp_head_1=64, mlp_head_2=16, patch_size=2, proj_dim=42;, score=0.671 total time= 4.3min
+[CV 2/3] END heads=5, layers_n=2, mlp_head_1=64, mlp_head_2=16, patch_size=2, proj_dim=42;, score=0.566 total time= 4.3min
+[CV 3/3] END heads=5, layers_n=2, mlp_head_1=64, mlp_head_2=16, patch_size=2, proj_dim=42;, score=0.554 total time= 4.2min
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+[CV 1/3] END heads=5, layers_n=1, mlp_head_1=32, mlp_head_2=16, patch_size=10, proj_dim=38;, score=0.775 total time=  21.9s
+[CV 2/3] END heads=5, layers_n=1, mlp_head_1=32, mlp_head_2=16, patch_size=10, proj_dim=38;, score=0.719 total time=  22.1s
+[CV 3/3] END heads=5, layers_n=1, mlp_head_1=32, mlp_head_2=16, patch_size=10, proj_dim=38;, score=0.703 total time=  21.5s
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+[CV 1/3] END heads=2, layers_n=4, mlp_head_1=64, mlp_head_2=32, patch_size=10, proj_dim=52;, score=0.739 total time=  45.0s
+[CV 2/3] END heads=2, layers_n=4, mlp_head_1=64, mlp_head_2=32, patch_size=10, proj_dim=52;, score=0.695 total time=  47.6s
+[CV 3/3] END heads=2, layers_n=4, mlp_head_1=64, mlp_head_2=32, patch_size=10, proj_dim=52;, score=0.799 total time=  46.9s
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+[CV 1/3] END heads=5, layers_n=1, mlp_head_1=64, mlp_head_2=16, patch_size=10, proj_dim=38;, score=0.651 total time=  21.2s
+[CV 2/3] END heads=5, layers_n=1, mlp_head_1=64, mlp_head_2=16, patch_size=10, proj_dim=38;, score=0.831 total time=  22.7s
+[CV 3/3] END heads=5, layers_n=1, mlp_head_1=64, mlp_head_2=16, patch_size=10, proj_dim=38;, score=0.779 total time=  22.2s
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+[CV 1/3] END heads=5, layers_n=1, mlp_head_1=64, mlp_head_2=16, patch_size=10, proj_dim=42;, score=0.779 total time=  21.4s
+[CV 2/3] END heads=5, layers_n=1, mlp_head_1=64, mlp_head_2=16, patch_size=10, proj_dim=42;, score=0.803 total time=  22.1s
+[CV 3/3] END heads=5, layers_n=1, mlp_head_1=64, mlp_head_2=16, patch_size=10, proj_dim=42;, score=0.775 total time=  22.1s
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+[CV 1/3] END heads=2, layers_n=1, mlp_head_1=64, mlp_head_2=16, patch_size=10, proj_dim=38;, score=0.811 total time=  21.4s
+[CV 2/3] END heads=2, layers_n=1, mlp_head_1=64, mlp_head_2=16, patch_size=10, proj_dim=38;, score=0.779 total time=  22.0s
+[CV 3/3] END heads=2, layers_n=1, mlp_head_1=64, mlp_head_2=16, patch_size=10, proj_dim=38;, score=0.763 total time=  21.3s
+[MAE] Fold 3: test accuracy = 0.8311
+[MAE] Fold 3: best params = OrderedDict([('heads', 5), ('layers_n', 2), ('mlp_head_1', 32), ('mlp_head_2', 16), ('patch_size', 10), ('proj_dim', 52)])
+
+[MAE] Mean accuracy: 0.8473 +/- 0.0265
