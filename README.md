@@ -33,17 +33,27 @@ MAE-style = MAE encoder architecture trained end-to-end for classification, no s
 | `results/roc_data/` | Out-of-fold predictions per model and fold (`<model>_fold<k>.npz`) |
 
 ## Run
+From the repository root:
+
+    export OCT_DATA_DIR=/path/to/OCT_Dataset
+    export PYTHONPATH=$(pwd)/models
+
     python models/bayes_niter15_v3.py                    # Retformer
     python models/vit_swin_kfold_nested_matched_v2.py    # ViT and Swin
     python models/deit_niter15_v3.py                     # DeiT-style
     python models/mae_niter15_v3.py                      # MAE-style
 
-Figures and tables from the saved predictions (no GPU needed):
+Figures, metrics and efficiency from the saved predictions (no GPU needed). Run them from `results/`, where `roc_data/` is:
 
-    cd analysis
-    python compute_full_metrics.py
-    python roc_curve_overlay.py
-    python confusion_matrix_display.py
+    cd results
+    python ../analysis/compute_full_metrics.py
+    python ../analysis/roc_curve_overlay.py              # figure_roc_overlay.png
+    python ../analysis/confusion_matrix_display.py       # figure_confusion_matrices.png
+    python ../analysis/measure_efficiency.py             # Retformer, ViT, Swin
+    python ../analysis/compute_efficiency.py deit        # DeiT-style
+    python ../analysis/compute_efficiency.py mae         # MAE-style
+
+Inference times depend on hardware; parameter counts are exact.
 
 ## Results (mean ± SD over 3 outer folds)
 | Model | Accuracy (%) | AUC (%) | Parameters |
